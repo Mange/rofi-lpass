@@ -10,9 +10,11 @@ Custom script for Rofi that allows you to copy passwords from your Lastpass vaul
 * Copy URL (if entry has an URL)
 * Open URL (if entry has an URL)
 
-## Dependencies
+## Installation
 
-- lastpass-cli, with `lpass` on your `PATH`.
+1. Make sure you have [lastpass-cli](https://github.com/lastpass/lastpass-cli) installed, with `lpass` on your `PATH`.
+2. Symlink the script to somewhere on your `$PATH`: `ln -s $(pwd)/rofi-lpass ~/bin/rofi-lpass`.
+3. Run rofi with this as a custom script: `rofi -modi lpass:rofi-lpass -show lpass`
 
 ## License
 
