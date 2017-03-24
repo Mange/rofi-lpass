@@ -6,16 +6,8 @@ print-account-list() {
   lpass ls --format "%/as%ag - %an (%au) [%ai]" 2>&1
 }
 
-copy-account-password() {
-  lpass show --clip --password "$1" >/dev/null 2>/dev/null
-}
-
-copy-account-username() {
-  lpass show --clip --username "$1" >/dev/null 2>/dev/null
-}
-
-copy-account-url() {
-  lpass show --clip --url "$1" >/dev/null 2>/dev/null
+copy-account-field() {
+  lpass show --clip "--${2}" "$1" >/dev/null 2>/dev/null
 }
 
 open-account-url() {
@@ -47,6 +39,8 @@ show-account-options() {
     echo ">> Open $url [$id]"
     echo ">> Copy URL [$id]"
   fi
+
+  echo ">> Copy ID [$id]"
 }
 
 is-entry-selected() {
@@ -73,11 +67,13 @@ if is-entry-selected "$1"; then
   if [[ -n $id ]]; then
     case "$selected" in
       '>> Copy password'*)
-        copy-account-password "$id" ;;
+        copy-account-field "$id" password ;;
       '>> Copy username'*)
-        copy-account-username "$id" ;;
+        copy-account-field "$id" username ;;
       '>> Copy URL'*)
-        copy-account-url "$id" ;;
+        copy-account-field "$id" url ;;
+      '>> Copy ID'*)
+        copy-account-field "$id" id ;;
       '>> Open'*)
         open-account-url "$id" ;;
       *)
