@@ -1,5 +1,7 @@
 # rofi-lpass
 
+:warning: **NOTE:** This repo is 100% unmaintained. I've switched from Laspass to BitWarden. Do not expect any updates or help to get this working.
+
 Custom script for Rofi that allows you to copy passwords from your Lastpass vault.
 
 ## Features
